@@ -44,19 +44,49 @@ public class Line {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public int getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public Line(String content, int number) {
+        this.content = content;
         this.number = number;
+        init();
     }
 
-    public Line(String content) {
-        this.content = content;
+    private void init() {
+        String[] words = content.split(" ");
+        this.longestWord = calcLongestWordLength(words);
+        this.shortestWord = calcShortestWordLength(words);
+        this.awgWordLength = calcAwgWordLength(words);
+        this.length = content.length();
+    }
+
+    private int calcLongestWordLength(String[] words) {
+        int longestWordLength = 0;
+        for (String word : words) {
+            if (word.length() > longestWordLength) {
+                longestWordLength = word.length();
+            }
+        }
+        return longestWordLength;
+    }
+
+    private int calcShortestWordLength(String[] words) {
+        int shortestWordLength = words[0].length();
+        for (String word : words) {
+            if (word.length() < shortestWordLength) {
+                shortestWordLength = word.length();
+            }
+        }
+        return shortestWordLength;
+    }
+
+    private int calcAwgWordLength(String[] words) {
+        int totalLength = 0;
+        for (String word : words) {
+            totalLength += word.length();
+        }
+        return totalLength/(words.length);
     }
 }

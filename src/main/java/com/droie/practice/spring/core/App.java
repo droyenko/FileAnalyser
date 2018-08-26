@@ -1,5 +1,6 @@
 package com.droie.practice.spring.core;
 
+import com.droie.practice.spring.core.beans.File;
 import com.droie.practice.spring.core.beans.FileReader;
 import com.droie.practice.spring.core.beans.FileStatistics;
 
@@ -11,7 +12,7 @@ public class App {
     private FileReader fileReader;
     private FileStatistics fileStatistics;
 
-    public App(FileReader fileReader, FileStatistics fileStatistics) {
+    private App(FileReader fileReader, FileStatistics fileStatistics) {
         this.fileReader = fileReader;
         this.fileStatistics = fileStatistics;
     }
@@ -22,11 +23,15 @@ public class App {
 
         App app = new App(fileReader, fileStatistics);
 
+        String filePath = "";
+
         List<String> arguments = Arrays.asList(args);
         if (arguments.contains("--path")) {
-            String path = arguments.get(1);
-            fileReader.read(path);
+            filePath = arguments.get(1);
         }
+        File analysedFile = fileReader.read(filePath);
+
+        fileStatistics.process(analysedFile);
 
     }
 }
