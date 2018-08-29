@@ -1,7 +1,7 @@
 package com.droie.practice.spring.core;
 
-import com.droie.practice.spring.core.beans.File;
-import com.droie.practice.spring.core.beans.FileReader;
+import com.droie.practice.spring.core.entities.File;
+import com.droie.practice.spring.core.util.FileReader;
 import com.droie.practice.spring.core.beans.FileStatistics;
 
 import java.util.Arrays;
@@ -17,7 +17,7 @@ public class App {
         this.fileStatistics = fileStatistics;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         FileReader fileReader = new FileReader();
         FileStatistics fileStatistics = new FileStatistics();
 

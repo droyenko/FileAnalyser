@@ -1,4 +1,4 @@
-package com.droie.practice.spring.core.beans;
+package com.droie.practice.spring.core.entities;
 
 import java.util.List;
 
